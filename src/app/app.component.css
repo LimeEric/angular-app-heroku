@@ -1,0 +1,14 @@
+a{
+    display: flex;
+    color: #71B739;
+}
+
+body {
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+}
