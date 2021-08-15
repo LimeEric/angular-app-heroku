@@ -17,5 +17,17 @@
     language-code="de"
     chat-icon="https://i.ibb.co/crsHWD0/Avatar-Maker.png"
   ></df-messenger>
+  <script> 
+    const dfMessenger = document.querySelector('df-messenger');
+    dfMessenger.addEventListener('df-messenger-loaded', function (event) {
+      
+      console.log(event);
+        if (event.detail.response) {
+            data = event.detail.response;
+            console.log(data);
+            //now do something with the data JSON object
+        }
+    });
+  </script>
 </body>
 </html>
