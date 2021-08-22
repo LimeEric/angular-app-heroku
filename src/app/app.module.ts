@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShopsComponent } from './shops/shops.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ShopsComponent } from './shops/shops.component';
   
   declarations: [
     AppComponent,
-    ShopsComponent
+    ShopsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
