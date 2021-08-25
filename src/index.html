@@ -18,16 +18,19 @@
     chat-icon="https://i.ibb.co/crsHWD0/Avatar-Maker.png"
   ></df-messenger>
   <script> 
+  function changeStyle() {
+      heading = document.getElementById("ueberschrift");
+      console.log("hallo");
+      heading.style.color = "red";
+  }
+
     const dfMessenger = document.querySelector('df-messenger');
-    dfMessenger.addEventListener('df-messenger-loaded', function (event) {
+    dfMessenger.addEventListener('df-user-input-entered', function (event) {
       
-      console.log(event);
-        if (event.detail.response) {
-            data = event.detail.response;
-            console.log(data);
-            //now do something with the data JSON object
-        }
+      changeStyle();
     });
+    
+
   </script>
 </body>
 </html>
