@@ -18,9 +18,14 @@
     chat-icon="https://i.ibb.co/crsHWD0/Avatar-Maker.png"
   ></df-messenger>
   <script> 
+  function changeStyle(){
+    document.getElementById("ueberschrift").style.color = "red";
+  }
+    
     const dfMessenger = document.querySelector('df-messenger');
     dfMessenger.addEventListener('df-response-received', function (event) {
       
+
       console.log(event);
         if (event.detail.response) {
             data = event.detail.response;
@@ -37,6 +42,12 @@
           //...
           console.log("das klappt auch");
         }
+
+    });
+
+    dfMessenger.addEventListener('df-user-input-entered', function (event) {
+      changeStyle();
+
     });
   </script>
 </body>
