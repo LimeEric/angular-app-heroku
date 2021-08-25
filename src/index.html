@@ -19,7 +19,7 @@
   ></df-messenger>
   <script> 
   function changeStyle(){
-    document.getElementById("ueberschrift").style.color = "red";
+    document.getElementById("ueberschrift").style.color = "#479b3d";
   }
     
     const dfMessenger = document.querySelector('df-messenger');
@@ -41,14 +41,19 @@
         if (data.queryResult.intent.displayName == "tools.Spritzwetter"){
           //...
           console.log("das klappt auch");
+          //document.getElementById('login').click();
         }
-
+        if(data.queryResult.intent.displayName == "smalltalk.agent.name"){
+          changeStyle();
+           }  
     });
 
-    dfMessenger.addEventListener('df-user-input-entered', function (event) {
-      changeStyle();
+  // dfMessenger.addEventListener('df-user-input-entered', function (event) {
+ //    if(data.queryResult.intent.displayName == "smalltalk.agent.name"){
+   //   changeStyle();
+   //  }
 
-    });
+  //  });
   </script>
 </body>
 </html>
