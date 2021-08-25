@@ -19,13 +19,23 @@
   ></df-messenger>
   <script> 
     const dfMessenger = document.querySelector('df-messenger');
-    dfMessenger.addEventListener('df-messenger-loaded', function (event) {
+    dfMessenger.addEventListener('df-response-received', function (event) {
       
       console.log(event);
         if (event.detail.response) {
             data = event.detail.response;
-            console.log(data);
+            console.log(data.queryResult.action);
             //now do something with the data JSON object
+        }
+
+        if (data.queryResult.action == "input.welcome"){
+          //...
+          console.log("das klappt");
+        }
+
+        if (data.queryResult.intent.displayName == "tools.Spritzwetter"){
+          //...
+          console.log("das klappt auch");
         }
     });
   </script>
