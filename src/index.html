@@ -17,13 +17,46 @@
     language-code="de"
     chat-icon="https://i.ibb.co/crsHWD0/Avatar-Maker.png"
   ></df-messenger>
+  
   <script> 
-  function changeStyle(){
-    document.getElementById("ueberschrift").style.color = "#479b3d";
+  function Sleep(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
   }
+  function showArrow(){
+    document.getElementById("arrow").style.display="block";
+  }
+
+  function hideArrow(){
+    document.getElementById("arrow").style.display="none";
+  }
+
+  function changeStyle(){
+    var heading= document.getElementById("ueberschrift");
+    heading.style.color = "#479b3d";
+    heading.style.borderColor="red";
+    heading.style.borderWidth = "2px";
+    heading.style.borderStyle="dashed";
+   
+  }
+
+  function removeStyle(){
+    var heading= document.getElementById("ueberschrift");
+    heading.style.color = "black";
+    heading.style.border ="none";
+  }
+   
+  function createBox(){
+    var div = document.createElement("div");
+    div.style.width = "60%px";
+    div.style.height = "50px";
+    div.style.borderColor = "red";
+    div.style.borderWidth = "2px";
+    div.style.borderStyle="dashed";
+    document.getElementById("ueberschrift").appendChild(div);
+    }
     
     const dfMessenger = document.querySelector('df-messenger');
-    dfMessenger.addEventListener('df-response-received', function (event) {
+    dfMessenger.addEventListener('df-response-received', async function (event) {
       
 
       console.log(event);
@@ -41,10 +74,18 @@
         if (data.queryResult.intent.displayName == "tools.Spritzwetter"){
           //...
           console.log("das klappt auch");
+          for (i=0;i<5;i++){
+            showArrow();
+            await Sleep(1000);
+            hideArrow();
+            await Sleep(500);
+          }
           //document.getElementById('login').click();
         }
         if(data.queryResult.intent.displayName == "smalltalk.agent.name"){
           changeStyle();
+          await Sleep(5000);
+          removeStyle();
            }  
     });
 
