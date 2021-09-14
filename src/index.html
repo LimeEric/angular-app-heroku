@@ -86,7 +86,23 @@
           changeStyle();
           await Sleep(5000);
           removeStyle();
-           }  
+           } 
+           
+        if (data.queryResult.intent.displayName == "agent.search - fallback"){
+          var search_string = data.queryResult.queryText;
+          search_string +=  ".*";
+          var re = new RegExp(search_string, "i");
+          const news_text = document.getElementById("news").textContent;
+         
+          result = news_text.search(re);
+          console.log(result);
+          
+          if(result!=-1){
+            await Sleep(500);
+            dfMessenger.renderCustomText('Here you go');
+          }
+          
+        }
     });
 
   // dfMessenger.addEventListener('df-user-input-entered', function (event) {
