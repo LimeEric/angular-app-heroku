@@ -106,7 +106,7 @@
 
           var overview_news = "https://angular-app-heroku-dirk.herokuapp.com/shops";
           var news_dom = getSourceAsDOM(overview_news);
-          var news_urls = news_dom.getElementsByTagName('p')
+          var news_urls = news_dom.document.getElementsByTagName('p')
           console.log(news_urls);
 
 
