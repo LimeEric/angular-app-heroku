@@ -88,7 +88,7 @@
           removeStyle();
            } 
            
-        if (data.queryResult.intent.displayName == "agent.search - fallback"){
+        if (data.queryResult.intent.displayName == "agent.search - custom"){
           var search_string = data.queryResult.queryText;
           search_string +=  ".*";
           var re = new RegExp(search_string, "i");
@@ -99,7 +99,24 @@
           
           if(result!=-1){
             await Sleep(500);
-            dfMessenger.renderCustomText('Here you go');
+            const payload = [
+            {
+              "type": "button",
+              "text": "Zum passenden Artikel",
+              "icon": {
+                "type": "chevron_right", 
+                "color": "#233C4C"
+              },
+              "link": "https://demo.myfarmvis.com/services/news/news-item/ea5a1071-a9a9-4c91-9a17-9fc0872af1c0",
+              "event": {
+                "languageCode": "de",
+                "parameters": {},
+                "name": "furtherHelp"
+              }
+            }];
+          dfMessenger.renderCustomCard(payload);
+          } else{
+            dfMessenger.renderCustomText('Es wurden keine Ergebnisse gefunden.');
           }
           
         }
