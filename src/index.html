@@ -54,6 +54,14 @@
     div.style.borderStyle="dashed";
     document.getElementById("ueberschrift").appendChild(div);
     }
+
+  function getSourceAsDOM(url){
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("GET",url,false);
+    xmlhttp.send();
+    parser=new DOMParser();
+    return parser.parseFromString(xmlhttp.responseText,"text/html");      
+  }
     
     const dfMessenger = document.querySelector('df-messenger');
     dfMessenger.addEventListener('df-response-received', async function (event) {
@@ -89,6 +97,19 @@
            } 
            
         if (data.queryResult.intent.displayName == "agent.search - custom"){
+
+          // var url zu news artikel
+          // liste mit allen a href (filtern)
+          // schleife durch liste
+          // neue liste mit strings von artikeln
+          // schleife die durch die neue liste durchgeht und nach match sucht
+
+          var overview_news = "https://angular-app-heroku-dirk.herokuapp.com/shops"
+          var news_dom = getSourceAsDOM(overview_news)
+          //var news_urls = document.getElementById('news_articles').contentWindow.document.getElementsByTagName('a');
+          console.log(news_dom)
+
+
           var search_string = data.queryResult.queryText;
           search_string +=  ".*";
           var re = new RegExp(search_string, "i");
