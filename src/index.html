@@ -65,21 +65,23 @@
     
     const dfMessenger = document.querySelector('df-messenger');
     dfMessenger.addEventListener('df-response-received', async function (event) {
-      
 
+      const data = event.detail.response;
+      const displayName = data.queryResult.intent.displayName; 
+      const action = data.queryResult.action;
+      
       console.log(event);
-        if (event.detail.response) {
-            data = event.detail.response;
-            console.log(data.queryResult.action);
+        if (data) {
+            console.log(action);
             //now do something with the data JSON object
         }
 
-        if (data.queryResult.action == "input.welcome"){
+        if (action == "input.welcome"){
           //...
           console.log("das klappt");
         }
 
-        if (data.queryResult.intent.displayName == "tools.Spritzwetter"){
+        if (displayName == "tools.Spritzwetter"){
           //...
           console.log("das klappt auch");
           for (i=0;i<5;i++){
@@ -90,13 +92,13 @@
           }
           //document.getElementById('login').click();
         }
-        if(data.queryResult.intent.displayName == "smalltalk.agent.name"){
+        if(displayName == "smalltalk.agent.name"){
           changeStyle();
           await Sleep(5000);
           removeStyle();
            } 
            
-        if (data.queryResult.intent.displayName == "agent.search - custom"){
+        if (displayName == "agent.search - custom"){
 
           // var url zu news artikel
           // liste mit allen a href (filtern)
