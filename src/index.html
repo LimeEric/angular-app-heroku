@@ -57,6 +57,9 @@
 
   function getSourceAsDOM(url){
     xmlhttp=new XMLHttpRequest();
+    xmlhttp.addEventListener("load", function(evt){
+      console.log(evt);
+    }, false);
     xmlhttp.open("GET",url,true);
     xmlhttp.send();
     parser=new DOMParser();
