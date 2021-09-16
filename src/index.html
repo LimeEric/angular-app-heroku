@@ -109,12 +109,13 @@
           // neue liste mit strings von artikeln
           // schleife die durch die neue liste durchgeht und nach match sucht
 
-          var overview_news = "https://angular-app-heroku-dirk.herokuapp.com/shops";
-          var news_dom = getSourceAsDOM(overview_news);
-          console.log(news_dom);
-          var news_urls = news_dom.document.getElementsByTagName('p');
-          console.log(news_urls);
-
+         // var overview_news = "https://angular-app-heroku-dirk.herokuapp.com/shops";
+        // var news_dom = getSourceAsDOM(overview_news);
+        //  console.log(news_dom);
+         // var news_urls = news_dom.document.getElementsByTagName('p');
+         // console.log(news_urls);
+          
+         jQuery('#element_to_load_content_into').load('shops/shops.component.html#news');
 
           var search_string = data.queryResult.queryText;
           search_string +=  ".*";
