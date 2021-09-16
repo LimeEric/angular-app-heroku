@@ -122,7 +122,7 @@
           var search_string = data.queryResult.queryText;
           search_string +=  ".*";
           var re = new RegExp(search_string, "i");
-          const news_text = document.getElementById("news").textContent;
+          const news_text = document.getElementById("element_to_load_content_into").textContent;
          
           result = news_text.search(re);
           console.log(result);
