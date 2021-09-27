@@ -111,18 +111,26 @@
           // neue liste mit strings von artikeln
           // schleife die durch die neue liste durchgeht und nach match sucht
 
-         // var overview_news = "https://angular-app-heroku-dirk.herokuapp.com/shops";
-        // var news_dom = getSourceAsDOM(overview_news);
-        //  console.log(news_dom);
-         // var news_urls = news_dom.document.getElementsByTagName('p');
-         // console.log(news_urls);
+          // var overview_news = "https://angular-app-heroku-dirk.herokuapp.com/shops";
+          // var news_dom = getSourceAsDOM(overview_news);
+          //  console.log(news_dom);
+          // var news_urls = news_dom.document.getElementsByTagName('p');
+          // console.log(news_urls);
           
-         //jQuery('#element_to_load_content_into').load('shops/shops.component.html#news');
+          //jQuery('#element_to_load_content_into').load('shops/shops.component.html#news');
 
-         $.get('shops/shops.component.html', function (content) {
-          content = $(content).find('#news');
-          console.log(content);
-          // data contains your html
+          //$.get('shops.component.html', function (content) {
+          //  content = $(content).find('#news');
+          //  console.log(content);
+            // data contains your html
+          //});
+          
+          $(function(){
+          $.get('http://localhost:3000/shops.html', function(result){
+          var obj = $(result).find('body');
+              var content = $(result).find('#news').text();
+              console.log(content);
+          });
           });
 
           var search_string = data.queryResult.queryText;
@@ -130,10 +138,10 @@
           var re = new RegExp(search_string, "i");
           //const news_text = document.getElementById("element_to_load_content_into").textContent;
          
-          result = content.search(re);
-          console.log(result);
+          search_result = content.search(re);
+          console.log(search_result);
           
-          if(result!=-1){
+          if(search_result!=-1){
             await Sleep(500);
             const payload = [
             {
